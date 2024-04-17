@@ -56,7 +56,7 @@ const Card = ({
 
     const handleDeleteChange = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/backorders/${id}/`, {
+            const response = await fetch(`${API_URL}/backorders/${id}/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

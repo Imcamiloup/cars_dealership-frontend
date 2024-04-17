@@ -10,7 +10,7 @@ import cancel from '../../assets/Icon_cancelar.svg'
 
 
 import './Create.css';
-
+const  API_URL = import.meta.env.VITE_API_URL;
 
 const Create = ({
         editOnOff,
@@ -43,7 +43,7 @@ const Create = ({
         try{
            
             if (selectSubmit=="post"){
-                const response  = await fetch('http://127.0.0.1:8000/api/backorders/',{
+                const response  = await fetch(`${API_URL}/backorders/`,{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ const Create = ({
             }
             if (selectSubmit=="put"){
                 console.log('llegúe al put')
-                const response = await fetch(`http://127.0.0.1:8000/api/backorders/${id}/`,{
+                const response = await fetch(`${API_URL}/backorders/${id}/`,{
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
