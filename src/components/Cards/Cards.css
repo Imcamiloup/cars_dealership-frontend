@@ -1,0 +1,77 @@
+.row {
+    border-bottom: 1px solid #000000;
+}
+
+/* Estilos para el contenedor de la tabla */
+.table-container{
+    padding-right: 40px;
+}
+
+/* Estilos para la tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+
+td {
+    width: 180px;
+    padding: 2px;
+    text-align: left;
+    color: #C5C5C5;
+    text-transform: capitalize;
+}
+
+first-th {
+    width: 210px;
+    background-color: #E280BE;
+    margin: 5px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+}
+
+second-th {
+    width: 210px;
+    background-color: #E280BE;
+    margin: 5px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+}
+
+third-th {
+    width: 210px;
+    background-color: #E280BE;
+    margin: 5px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+}
+th {
+    background-color: #E280BE;
+    margin: 5px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+
+
+
+
+/* Estilos para las filas al pasar el mouse */
+tr:hover {
+    background-color: #f5ebf5;
+}
+
+
+tr {
+    font-size: 26px;
+    width: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1.5fr ; /* Ejemplo: 3 columnas */
+    grid-gap: 5px;
+}
+
