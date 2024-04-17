@@ -1,0 +1,84 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.landing-container {
+    position: relative;
+    width: 230vh;
+    height: 90vh;
+    background-image: url('../../assets/Telefono-01.png'); /* Ruta de tu imagen de fondo */
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-position-x: 200px;
+}
+
+
+
+.text-background, .text-foreground {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00249C;
+    text-align: center;
+    z-index: 1; /* Asegura que el texto esté sobre el fondo */
+}
+
+.text-foreground {
+    font-size: 3em;
+    font-weight: bold;
+    padding-top: 200px;
+}
+
+@keyframes animateText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+.contenedor-enlaces {
+    width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-70%);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-weight: 500;
+   
+}
+
+.enlace {
+    text-decoration: none;
+    color: #40CEE4;
+    padding: 5px 10px;
+}
+
+
+.text-background h1, .text-foreground h2 {
+    animation: animateText 2s ease-in-out forwards; /* Animación de aparición del texto */
+}
+
+
+.redirection {
+    padding-top: 50px;
+    color: #00249C;        
+}
+
+.logo-direction {
+    width: 80px;
+}
+
+.redirection {
+    text-decoration: none;
+}

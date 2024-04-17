@@ -2,32 +2,77 @@ import icon_edit_off from '../../assets/Icon_editar.svg';
 import icon_edit_on from '../../assets/Icon_editar1.svg';
 import icon_delete_off from '../../assets/Icon_eliminar.svg';
 import icon_delete_on from '../../assets/Icon_eliminar1.svg';
-
+import { useEffect, useState } from 'react';
 import './Card.css';
 
-const Card = ({backOrder, editOnOff, setEditOnOff, deleteOnOff, setDeleteOnOff}) => {
+const  API_URL = import.meta.env.VITE_API_URL;
 
-    const {brand, site, aspirant} = backOrder;
+const Card = ({
+        backOrder, 
+        editOnOff, 
+        setEditOnOff, 
+        deleteOnOff, 
+        setDeleteOnOff,
+        setActualBackOrder,
+        setSelectSubmit,
+        createOnOff,
+        setCreateOnOff
+    }) => {
 
-    const handleEditChange = () => {
-        if (editOnOff === true) {
+    const { id, brand, site, aspirant} = backOrder;
+    const [ localEditOnOff, setLocalEditOnOff] =useState(true)
+    
+   
+    useEffect(() => {
+        if (editOnOff && deleteOnOff) {
+            setLocalEditOnOff(true)
+        }
+    }
+    ,[editOnOff, deleteOnOff])
+
+
+    
+
+    const handleIconsChange = () => {
+        if (editOnOff ) {
             setEditOnOff(false)
+            setDeleteOnOff(false)
+            setLocalEditOnOff(false)
+            setActualBackOrder(id)
+            setSelectSubmit('put')
         }
         else {
             setEditOnOff(true)
-        }
-    }
-
-    const handleDeleteChange = () => {
-        if (deleteOnOff === true) {
-            setDeleteOnOff(false)
-        }
-        else {
             setDeleteOnOff(true)
+            
         }
+        if (!createOnOff){
+            setCreateOnOff(true)
+        }
+
+        
+        
     }
 
+    const handleDeleteChange = async () => {
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/backorders/${id}/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }).catch((error) => {
+                console.log('Error:', error);
+            });
+            console.log(response)
 
+            
+        } catch (error) {
+            console.log('Error:', error);
+        }
+    };
+
+    
 
     return (
         <tr className='card'>
@@ -39,16 +84,16 @@ const Card = ({backOrder, editOnOff, setEditOnOff, deleteOnOff, setDeleteOnOff})
                 </div>
                 <div className='icons-container'>
                     <img 
-                        src={editOnOff? icon_edit_on : icon_edit_off} 
+                        src={!editOnOff && localEditOnOff ? icon_edit_off : icon_edit_on } 
                         alt="edit"
-                        onClick={handleEditChange} 
+                        onClick={handleIconsChange} 
                         style={{ cursor: 'pointer' }}
                         /> 
                     <img 
-                        src={deleteOnOff? icon_delete_on : icon_delete_off} 
+                        src={!deleteOnOff && localEditOnOff? icon_delete_off : icon_delete_on} 
                         alt="delete" 
-                        onClick={handleDeleteChange}
                         style={{ cursor: 'pointer' }}
+                        onClick={handleDeleteChange}
                         />
                 </div>
                 

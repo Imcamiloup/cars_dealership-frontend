@@ -1,16 +1,36 @@
 import Card from '../Card/Card';
 import useBackOrders from '../../hooks/useBackOrders';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './Cards.css';
+import { act } from 'react-dom/test-utils';
+import { useEffect } from 'react';
+import { deleteBackOrder } from '../../Redux/backOrderSlice';
+import { useDispatch } from 'react-redux';
 
-const Cards = () => {
+const Cards = (
+    {editOnOff ,
+    setEditOnOff,
+    deleteOnOff,
+    setDeleteOnOff,   
+    actualBackOrder, 
+    setActualBackOrder,
+    setSelectSubmit,
+    createOnOff,
+    setCreateOnOff
+    }) => {
 
-    const {backOrders} = useBackOrders();
-    const [editOnOff, setEditOnOff] = useState(true);
-    const [deleteOnOff, setDeleteOnOff] = useState(true);
+    const { backOrders } = useBackOrders();
+    const deleteBackOrder = useSelector((state) => state.backOrder.deleteBackOrder);
+    const dispatch = useDispatch();
 
+
+    useEffect(() => {
+        if (deleteBackOrder) {
+            dispatch(deleteBackOrder(actualBackOrder))
+        }
+    }
+    ,[deleteBackOrder])
     
-
     return (
         <div className='table-container'>
             <table>
@@ -25,11 +45,16 @@ const Cards = () => {
                     return ( 
                         <Card  
                             key={backOrder.id} 
+                            actualBackOrder={actualBackOrder}
                             backOrder={backOrder} 
                             editOnOff={editOnOff} 
                             setEditOnOff={setEditOnOff}
                             deleteOnOff={deleteOnOff}
-                            setDeleteOnOff={setDeleteOnOff}
+                            setDeleteOnOff={setDeleteOnOff}                            
+                            setActualBackOrder={setActualBackOrder}
+                            setSelectSubmit={setSelectSubmit}
+                            createOnOff = {createOnOff}
+                            setCreateOnOff = {setCreateOnOff}
                             />
                     )
                 })}

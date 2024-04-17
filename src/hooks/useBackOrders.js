@@ -12,7 +12,7 @@ const useBackOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`${API_URL}/backorders`)
+        fetch(`${API_URL}/backorders/`)
         .then(console.log(API_URL))
         .then((response) => response.json())
         .then((data) => {

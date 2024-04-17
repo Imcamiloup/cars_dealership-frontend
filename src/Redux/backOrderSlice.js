@@ -7,6 +7,7 @@ const backOrderSlice = createSlice({
     initialState : {
         allBackOrders: [],
         backOrderDetail: {},
+        deletedBackOrder: {},
         },
     reducers: {
         getAllBackOrders: (state, action) => {
@@ -15,9 +16,12 @@ const backOrderSlice = createSlice({
         getBackOrderDetail: (state, action) => {
             state.backOrderDetail = action.payload;
         },
+        deleteBackOrder: (state, action) => {
+            state.deletedBackOrder = action.payload;
+        },
     },
 });    
 
-export const {getAllBackOrders, getBackOrderDetail} = backOrderSlice.actions;
+export const {getAllBackOrders, getBackOrderDetail, deleteBackOrder } = backOrderSlice.actions;
 
 export default backOrderSlice.reducer;

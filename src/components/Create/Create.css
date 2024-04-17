@@ -54,6 +54,8 @@ img {
     border-radius:15px;
     border: 1.5px solid #C5C5C5;
     margin-left: 20px;
+    font-size: 20px;
+    color: #C5C5C5
 }
 
 .icon-create{
@@ -101,3 +103,14 @@ button {
     padding-right: 35px;
     margin-top: 20px;
 }
+
+
+.button-image {
+    background: none;
+    border: none;
+    cursor: pointer;
+    /* Otros estilos según tu diseño */
+  }
+  
+
+  
