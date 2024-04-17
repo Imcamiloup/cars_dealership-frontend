@@ -1,0 +1,57 @@
+.card {
+    width: 695px;
+    display: grid;
+    grid-template-columns: 30% 30% 40% ;
+    border-bottom: 1.5px solid #000000;
+    border-color:  #E280BE;
+    justify-content:space-evenly;
+    font-size: 21px;
+}
+
+.card img{
+    width: 25px;
+    
+}
+
+.td {
+    display: flex;
+    text-align: left;
+    width: 180px;
+
+}
+
+.td-aspirant{
+
+    text-align: left;
+    width: 100%;
+    font-size: 20px;
+    font: monserrat;
+    color: #C5C5C5;
+    padding-left: 0px;
+}
+
+.last-td{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    padding: 2px;
+    font-size: 20px;
+}
+
+.second-td{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    padding: 2px;
+    font-size: 20px;
+}
+
+.icons-container{
+    display: flex;
+    flex-direction: row;
+    width: 8px;
+}
+
+
+
+
