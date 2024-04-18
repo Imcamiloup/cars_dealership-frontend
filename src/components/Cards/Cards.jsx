@@ -25,11 +25,13 @@ const Cards = (
         const response = await fetch(`${API_URL}/backorders/`)
         const data = await response.json()
         dispatch(getAllBackOrders(data))
+    }
 
     useEffect(() => {
         getBackOrders()
     }
     ,[backOrders])
+
     
     return (
         <div className='table-container'>
