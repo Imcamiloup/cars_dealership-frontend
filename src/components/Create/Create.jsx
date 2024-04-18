@@ -16,7 +16,6 @@ const Create = ({
         editOnOff,
         setEditOnOff,
         setDeleteOnOff,
-        actualBackOrder,
         selectSubmit,
         setSelectSubmit,
         createOnOff,
@@ -54,9 +53,7 @@ const Create = ({
                         aspirant: e.target.aspirant.value
                     })
                 })
-                console.log(response)
                 const data = await response.json()
-                console.log(data)
                 if(createOnOff===true){
                     setCreateOnOff(false)
                 }
@@ -74,9 +71,7 @@ const Create = ({
                         aspirant: e.target.aspirant.value
                     })
                 })
-                console.log(response)
                 const data = await response.json()
-                console.log(data)
                 if (editOnOff === true){
                     setEditOnOff(true)
                     setDeleteOnOff(true)
