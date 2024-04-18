@@ -16,11 +16,11 @@ const Card = ({
         setActualBackOrder,
         setSelectSubmit,
         createOnOff,
-        setCreateOnOff
+        setCreateOnOff,
     }) => {
 
     const { id, brand, site, aspirant} = backOrder;
-    const [ localEditOnOff, setLocalEditOnOff] =useState(true)
+    const [ localEditOnOff, setLocalEditOnOff] = useState(true)
     
    
     useEffect(() => {
@@ -33,7 +33,7 @@ const Card = ({
 
     
 
-    const handleIconsChange = () => {
+    const handleEditChange = () => {
         if (editOnOff ) {
             setEditOnOff(false)
             setDeleteOnOff(false)
@@ -44,7 +44,6 @@ const Card = ({
         else {
             setEditOnOff(true)
             setDeleteOnOff(true)
-            
         }
         if (!createOnOff){
             setCreateOnOff(true)
@@ -65,11 +64,10 @@ const Card = ({
                 console.log('Error:', error);
             });
             console.log(response)
-
-            
         } catch (error) {
             console.log('Error:', error);
         }
+        
     };
 
     
@@ -86,15 +84,18 @@ const Card = ({
                     <img 
                         src={!editOnOff && localEditOnOff ? icon_edit_off : icon_edit_on } 
                         alt="edit"
-                        onClick={handleIconsChange} 
+                        onClick={handleEditChange} 
                         style={{ cursor: 'pointer' }}
                         /> 
-                    <img 
-                        src={!deleteOnOff && localEditOnOff? icon_delete_off : icon_delete_on} 
-                        alt="delete" 
-                        style={{ cursor: 'pointer' }}
-                        onClick={handleDeleteChange}
-                        />
+                    <button className='button-delete' type='submit'>
+                        <img 
+                            src={!deleteOnOff && localEditOnOff? icon_delete_off : icon_delete_on} 
+                            alt="delete" 
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleDeleteChange}
+                        />  
+                    </button>    
+                    
                 </div>
                 
             </td>
