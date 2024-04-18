@@ -2,9 +2,7 @@ import Card from '../Card/Card';
 import useBackOrders from '../../hooks/useBackOrders';
 import { useSelector } from 'react-redux';
 import './Cards.css';
-import { act } from 'react-dom/test-utils';
 import { useEffect } from 'react';
-import { deleteBackOrder } from '../../Redux/backOrderSlice';
 import { useDispatch } from 'react-redux';
 
 const Cards = (
@@ -20,16 +18,18 @@ const Cards = (
     }) => {
 
     const { backOrders } = useBackOrders();
-    const deleteBackOrder = useSelector((state) => state.backOrder.deleteBackOrder);
     const dispatch = useDispatch();
 
 
+    const getBackOrders = async () => {
+        const response = await fetch(`${API_URL}/backorders/`)
+        const data = await response.json()
+        dispatch(getAllBackOrders(data))
+
     useEffect(() => {
-        if (deleteBackOrder) {
-            dispatch(deleteBackOrder(actualBackOrder))
-        }
+        getBackOrders()
     }
-    ,[deleteBackOrder])
+    ,[backOrders])
     
     return (
         <div className='table-container'>
