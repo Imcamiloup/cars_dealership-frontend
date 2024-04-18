@@ -19,11 +19,12 @@ const Create = ({
         selectSubmit,
         setSelectSubmit,
         createOnOff,
-        setCreateOnOff
+        setCreateOnOff,
+        actualBackOrder,
     }) => {
 
     
-       
+       const id = actualBackOrder
 
     const handleCreateChange = () => {
         if (createOnOff === false) {
@@ -41,7 +42,7 @@ const Create = ({
     const handleSubmit = async (e) => {
         try{
            
-            if (selectSubmit=="post"){
+            if (selectSubmit==="post"){
                 const response  = await fetch(`${API_URL}/backorders/`,{
                     method: 'POST',
                     headers: {
@@ -52,14 +53,13 @@ const Create = ({
                         site: e.target.site.value,
                         aspirant: e.target.aspirant.value
                     })
-                })
-                const data = await response.json()
+                }).then(response => response.json())
+                
                 if(createOnOff===true){
                     setCreateOnOff(false)
                 }
             }
-            if (selectSubmit=="put"){
-                console.log('llegúe al put')
+            if (selectSubmit==="put"){
                 const response = await fetch(`${API_URL}/backorders/${id}/`,{
                     method: 'PUT',
                     headers: {
@@ -71,7 +71,7 @@ const Create = ({
                         aspirant: e.target.aspirant.value
                     })
                 })
-                const data = await response.json()
+                console.log(response) //dont delete this line
                 if (editOnOff === true){
                     setEditOnOff(true)
                     setDeleteOnOff(true)
@@ -165,6 +165,7 @@ const Create = ({
                             src={check} 
                             alt="check" 
                             style={{ cursor: 'pointer' }} 
+                            onClick={handleSubmit}
                         />
                     </button>
                     
